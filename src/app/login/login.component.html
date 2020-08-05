@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <input [formControl]="email" id="email" placeholder="Your email" type="email"/>
+  <span *ngIf="submitted && email.invalid" id="email-error">
+    Please enter a valid email.
+  </span>
+  <input [formControl]="password" id="password" placeholder="********" type="password"/>
+  <span *ngIf="submitted && password.invalid" id="password-error">
+  Please enter a valid password.
+  </span>
+  <button type="submit">Sign in</button>
+</form>
+
