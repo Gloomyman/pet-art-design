@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    build:
+      dockerfile: Dockerfile-dev
+      context: .
+    command: npm run dev
+    volumes:
+      - './:/usr/src/back-end'
+      - 'node_modules:/usr/src/back-end/node_modules'
+    ports:
+      - '5000:5000'
+
+volumes:
+  db:
+  node_modules:

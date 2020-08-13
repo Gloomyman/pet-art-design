@@ -2,15 +2,24 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {LoginComponent} from './login.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from '../core/service/auth/auth.service';
+import {AuthDTO} from '../core/dto/auth-d-t-o';
+import SpyObj = jasmine.SpyObj;
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  const mockAuthService: SpyObj<AuthService> = jasmine.createSpyObj(
+    'authService',
+    ['login']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [ReactiveFormsModule]
+      imports: [ReactiveFormsModule],
+      providers: [
+        {provide: AuthService, useValue: mockAuthService}
+      ]
     }).compileComponents();
   }));
 
@@ -89,16 +98,32 @@ describe('LoginComponent', () => {
   });
 
   it('should render password validation message when formControl is submitted and invalid', () => {
+    // SETUP
     const elements: HTMLElement = fixture.nativeElement;
     expect(elements.querySelector('#password-error')).toBeFalsy();
 
+    // ACT
     elements.querySelector('button').click();
 
+    // VERIFY
     fixture.detectChanges();
     expect(elements.querySelector('#password-error')).toBeTruthy();
     expect(elements.querySelector('#password-error').textContent).toContain(
       'Please enter a valid password.'
     );
+  });
+
+  it('should call authService on onSubmit', () => {
+    // SETUP
+    const authDto: AuthDTO = new AuthDTO('testEmail@gmail.com', 'testPass');
+    component.form.controls.email.setValue(authDto.client_id);
+    component.form.controls.password.setValue(authDto.pass);
+
+    // ACT
+    component.onSubmit();
+
+    // VERIFY
+    expect(mockAuthService.login).toHaveBeenCalledWith(authDto);
   });
 
 });

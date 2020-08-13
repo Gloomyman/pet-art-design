@@ -1,0 +1,11 @@
+/node_modules
+/.vscode
+/config/local.js
+/.idea
+.DS_Store
+
+#use yarn instead
+package-lock.json
+
+/postgres_data
+/back-end.iml

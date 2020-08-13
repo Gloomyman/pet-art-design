@@ -1,0 +1,65 @@
+{
+  "name": "back-end",
+  "version": "1.1.1",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "bin": {
+    "migrate": "./bin/migrate"
+  },
+  "scripts": {
+    "start": "npm run migrate:latest && node index.js",
+    "stage": "npm run migrate:latest && NODE_ENV=stage node index.js",
+    "dev": "nodemon index.js | bunyan",
+    "lint": "eslint *.js config src db worker config",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "dependencies": {
+    "bluebird": "3.5.3",
+    "bunyan": "^1.8.12",
+    "commander": "^2.11.0",
+    "config": "^1.26.1",
+    "cookie": "^0.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.0",
+    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.3.0",
+    "node-fetch": "^2.3.0",
+    "request": "^2.88.2",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.0.1",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-react": "^7.13.0",
+    "jest": "^26.4.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^1.5.3",
+    "snyk": "^1.117.1",
+    "supertest": "^3.3.0"
+  },
+  "jest": {
+    "testMatch": [
+      "**/tests/**/*.js?(x)",
+      "**/?(*.)+(spec|test).js?(x)"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/config/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/config/"
+    ]
+  },
+  "engines": {
+    "node": "8.12.0"
+  },
+  "proxy": "http://localhost:5000"
+}

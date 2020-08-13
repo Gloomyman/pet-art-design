@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../core/service/auth/auth.service';
+import {AuthDTO} from '../core/dto/auth-d-t-o';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private authService: AuthService) {
   }
 
   get email(): FormControl | null {
@@ -33,6 +36,9 @@ export class LoginComponent implements OnInit {
     console.log(this.password.invalid);
     console.log(this.password.value);
     console.log(this.form.value);
+    const authDTO = new AuthDTO(this.form.controls.email.value, this.form.controls.password.value);
+    console.log(authDTO);
+    this.authService.login(authDTO);
   }
 
 }

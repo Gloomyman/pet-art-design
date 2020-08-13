@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "extends": "airbnb-base",
+  "plugins": [
+    "jest"
+  ],
+  "env": {
+    "browser": true,
+    "jest/globals": true,
+    "amd": true
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true
+      }
+    ],
+    "no-bitwise": "off",
+    "no-lonely-if": "off",
+    "class-methods-use-this": "off",
+    "arrow-body-style": "off",
+    "no-loop-func": "off",
+    "no-restricted-globals": "off"
+  }
+}
