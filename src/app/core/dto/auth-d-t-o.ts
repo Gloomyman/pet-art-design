@@ -1,22 +1,12 @@
-import {environment} from '../../../environments/environment';
-
 export class AuthDTO {
-  code: string;
-  private client_id: string;
-  private client_secret: string;
-  private redirect_uri: string = environment.host + '/auth-callback';
+  pass: string;
+  email: string;
 
-  constructor(clientId: string, clientSecret: string) {
-    this.client_id = clientId;
-    this.client_secret = clientSecret;
-  }
+  // private redirect_uri: string = environment.host + '/auth-callback';
 
-  get clientId(): string {
-    return this.client_id;
-  }
-
-  get clientSecret(): string {
-    return this.client_secret;
+  constructor(email: string, pass: string) {
+    this.email = email;
+    this.pass = pass;
   }
 
 }

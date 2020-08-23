@@ -65,31 +65,42 @@ describe('LoginComponent', () => {
   });
 
   it('should validate email format', () => {
+    // SETUP
     const email = component.form.controls.email;
-    email.setValue('test');
-    const errors = email.errors;
 
+    // ACT
+    email.setValue('test');
+
+    // VERIFY
+    const errors = email.errors;
     expect(errors.required).toBeFalsy();
-    expect(errors.pattern).toBeTruthy();
+    expect(errors.email).toBeTruthy();
     expect(email.valid).toBeFalsy();
   });
 
   it('should validate email format correctly', () => {
+    // SETUP
     const email = component.form.controls.email;
-    email.setValue('test@test.com');
-    const errors = email.errors || {};
 
+    // ACT
+    email.setValue('test@test.com');
+
+    // VERIFY
+    const errors = email.errors || {};
     expect(email.valid).toBeTruthy();
     expect(errors.required).toBeFalsy();
     expect(errors.pattern).toBeFalsy();
   });
 
   it('should render email validation message when formControl is submitted and invalid', () => {
+    // SETUP
     const elements: HTMLElement = fixture.nativeElement;
     expect(elements.querySelector('#email-error')).toBeFalsy();
 
+    // ACT
     elements.querySelector('button').click();
 
+    // VERIFY
     fixture.detectChanges();
     expect(elements.querySelector('#email-error')).toBeTruthy();
     expect(elements.querySelector('#email-error').textContent).toContain(
@@ -116,7 +127,7 @@ describe('LoginComponent', () => {
   it('should call authService on onSubmit', () => {
     // SETUP
     const authDto: AuthDTO = new AuthDTO('testEmail@gmail.com', 'testPass');
-    component.form.controls.email.setValue(authDto.client_id);
+    component.form.controls.email.setValue(authDto.email);
     component.form.controls.password.setValue(authDto.pass);
 
     // ACT

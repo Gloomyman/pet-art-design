@@ -1,12 +1,17 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="form">
-  <input [formControl]="email" id="email" placeholder="Your email" type="email"/>
-  <span *ngIf="submitted && email.invalid" id="email-error">
-    Please enter a valid email.
-  </span>
-  <input [formControl]="password" id="password" placeholder="********" type="password"/>
-  <span *ngIf="submitted && password.invalid" id="password-error">
-  Please enter a valid password.
-  </span>
-  <button type="submit">Sign in</button>
-</form>
-
+<mat-card>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <mat-form-field class="full-width-input">
+        <input [formControl]="email" id="email" matInput placeholder="Your email" type="email"/>
+      </mat-form-field>
+      <mat-error *ngIf="submitted && email.invalid" id="email-error">Please enter a valid email.
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input [formControl]="password" id="password" matInput placeholder="********" type="password"/>
+      </mat-form-field>
+      <mat-error *ngIf="submitted && password.invalid" id="password-error">Please enter a valid password.
+      </mat-error>
+      <button color="primary" mat-raised-button type="submit">Sign in</button>
+    </form>
+  </mat-card-content>
+</mat-card>
