@@ -7,8 +7,8 @@
     "migrate": "./bin/migrate"
   },
   "scripts": {
-    "start": "npm run migrate:latest && node index.js",
-    "stage": "npm run migrate:latest && NODE_ENV=stage node index.js",
+    "start": "node index.js",
+    "stage": "NODE_ENV=stage node index.js",
     "dev": "nodemon index.js | bunyan",
     "lint": "eslint *.js config src db worker config",
     "lint:fix": "npm run lint -- --fix"

@@ -4,7 +4,6 @@
 /.idea
 .DS_Store
 
-#use yarn instead
 package-lock.json
 
 /postgres_data

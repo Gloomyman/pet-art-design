@@ -33,12 +33,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-    console.log(this.password.invalid);
-    console.log(this.password.value);
-    console.log(this.form.value);
-    const authDTO = new AuthDTO(this.form.controls.email.value, this.form.controls.password.value);
-    console.log(authDTO);
-    this.authService.login(authDTO);
+    if (this.form.valid) {
+      const authDTO = new AuthDTO(this.form.controls.email.value, this.form.controls.password.value);
+      console.log(authDTO);
+      this.authService.login(authDTO);
+    }
   }
 
 }

@@ -3,7 +3,9 @@ import {NgModule} from '@angular/core';
 import {LoginComponent} from './login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgMaterialModule} from '../angular-material/ng-material.module';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import {NgMaterialModule} from '../angular-material/ng-material.module';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    NgMaterialModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
 })

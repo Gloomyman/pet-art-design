@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CanActivateRouteGuard} from './app-guard/can-activate-route-guard.service';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
+import {AuthCallbackComponent} from './auth-callback/auth-callback.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,14 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [CanActivateRouteGuard]
+  },
+  {
+    path: 'auth-callback',
+    component: AuthCallbackComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   }];
 
 @NgModule({
