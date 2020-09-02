@@ -20,14 +20,9 @@ export class AuthCallbackComponent implements OnInit {
 
   handleToken(): void {
     this.route.queryParams.subscribe(params => {
-      console.log('All params', params);
-      console.log('All param2', !params.error);
       if (params && !params.error) {
-        // const parameters = params.split('&');
-        console.log('param', params.code);
-        const idToken = params.code;
-        this.authService.setToken(idToken);
-        this.router.navigate(['/home']);
+        this.authService.exchangeAndSetToken(params.code)
+          .subscribe(() => this.router.navigate(['/home']));
       } else {
         this.router.navigate(['/login']);
       }

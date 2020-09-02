@@ -1,10 +1,14 @@
 <mat-toolbar color="primary">
-  <span class="title">Art & Design</span>
+  <button class="title" mat-button routerLink="/home">Art & Design</button>
 
   <span style="flex: 1 1 auto;"></span>
 
+  <a [routerLink]="currentUrl === '/profile' ? '/home' : '/profile'" style="color: white">
+    <button color="accent" mat-raised-button>{{currentUrl === '/profile' ? 'Home' : 'Profile'}}</button>
+  </a>
+
   <button (click)="logout()" id="logoutButton"
-          mat-raised-button>Logout
+          mat-button>Logout
   </button>
 
 </mat-toolbar>

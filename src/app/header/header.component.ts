@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../core/service/auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,15 @@ import {AuthService} from '../core/service/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
+  currentUrl: string;
+
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    this.currentUrl = this.router.url;
+    console.log(this.currentUrl);
   }
 
   logout(): void {

@@ -8,7 +8,6 @@ import {LoginModule} from './login/login.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './core/interceptors/token-interceptor.service';
 import {AuthCallbackComponent} from './auth-callback/auth-callback.component';
-import {HeaderComponent} from './header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -16,13 +15,14 @@ import {MatCardModule} from '@angular/material/card';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CardComponent} from './card/card.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HeaderModule} from './header/header.module';
+import {ProfileModule} from './profile/profile.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthCallbackComponent,
-    HeaderComponent,
     CardComponent
   ],
   imports: [
@@ -36,6 +36,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatCardModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
+    HeaderModule,
+    ProfileModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

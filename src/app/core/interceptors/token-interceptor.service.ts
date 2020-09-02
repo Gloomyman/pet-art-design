@@ -21,7 +21,7 @@ export class TokenInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (!req.url.includes('auth')) {
+    if (req.url.includes('oauth')) {
       return next.handle(req);
     }
     req = this.addAuthenticationToken(req);

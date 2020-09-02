@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AuthService} from '../core/service/auth/auth.service';
 
@@ -8,7 +8,8 @@ import {AuthService} from '../core/service/auth/auth.service';
 })
 export class CanActivateRouteGuard implements CanActivate {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot)
@@ -16,7 +17,7 @@ export class CanActivateRouteGuard implements CanActivate {
     if (this.authService.isLoggedIn()) {
       return true;
     } else {
-      document.location.href = AuthService.LOGIN_URL;
+      this.router.navigate(['/login']);
       return false;
     }
   }

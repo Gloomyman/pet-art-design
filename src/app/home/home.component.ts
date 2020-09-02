@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Card} from '../core/entity/Card';
+import {CardService} from '../core/service/card/card.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,12 +9,16 @@ import {Card} from '../core/entity/Card';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  allCards: Card[];
+  allCards: Observable<Card[]>;
 
-  constructor() {
+  constructor(private cardService: CardService) {
   }
 
   ngOnInit(): void {
-    this.allCards = [new Card(), new Card(), new Card()];
+    // this.allCards = of([new Card(), new Card(), new Card()]);
+    this.allCards = this.cardService.getCards();
+    this.allCards.subscribe(all => {
+      console.log(all);
+    });
   }
 }

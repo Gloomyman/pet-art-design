@@ -1,0 +1,19 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+img {
+  border-radius: 50%;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+}
+
+@mixin style-theme($theme) {
+  .mat-card-color {
+    background: mat-color(map-get($theme, primary)) !important;
+  }
+}

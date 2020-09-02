@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div fxLayoutAlign="center center" style="height: 40%;">
+
+  <mat-card class="profile mat-card-color">
+    <form [formGroup]=userFormGroup>
+      <mat-card-content>
+        <img [src]=user.avatar_url
+             alt="avatar"
+             class="rounded">
+        <div>Name: {{user.name}}</div>
+        <div>Followers: {{user.followers_count}}</div>
+        <label>Bio: </label>
+        <mat-form-field>
+          <textarea [formControlName]="'bio'"
+                    [readonly]=!edit
+                    matInput
+                    matTextareaAutosize></textarea>
+        </mat-form-field>
+        <mat-error *ngIf="userFormGroup.controls.bio.invalid" id="bio-error">
+          Please enter information into bio
+        </mat-error>
+        <mat-card-actions>
+          <button (click)="onClose()"
+                  *ngIf=edit
+                  mat-raised-button>
+            <mat-icon>close</mat-icon>
+          </button>
+          <button (click)="onEdit()" mat-raised-button>Edit</button>
+          <button (click)="onSave()"
+                  *ngIf=edit
+                  [disabled]=!userFormGroup.valid
+                  mat-raised-button>Save
+          </button>
+        </mat-card-actions>
+      </mat-card-content>
+    </form>
+  </mat-card>
+
+</div>

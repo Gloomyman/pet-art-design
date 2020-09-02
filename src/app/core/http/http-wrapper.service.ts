@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class HttpWrapperService {
 
-  static readonly apiBaseURL: string = environment.api_base_url;
+  static readonly apiBaseURL: string = environment.api_login_base_url;
 
   constructor(private httpClient: HttpClient) {
   }

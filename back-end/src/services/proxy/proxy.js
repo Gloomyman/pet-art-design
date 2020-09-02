@@ -1,33 +1,60 @@
 /* eslint-disable no-underscore-dangle */
+// import {map} from 'rxjs/operators';
+
 /**
  * Facebook Auth.
  */
 const {Router} = require('express');
 const config = require('config');
 const request = require('request');
+const axios = require('axios');
 const router = Router();
 
-router.get('/', (req, res, next) => {
-  console.log(req);
-  console.log('api_base_url', config.api_base_url);
+// router.post('/oauth/token', (req, res, next) => {
+//   let url = `${config.api_login_base_url}${req.originalUrl}?
+//      client_id=${config.client_id}
+//      &client_secret=${config.client_secret}
+//      &code= + ${req.params['code']}`;
+//
+//   const r = request.post({uri: url, json: req.body})
+//   req
+//     .pipe(r)
+//     .pipe(res)
+//     .pipe(response => {
+//       console.log('response', response);
+//     });
+// });
 
-  let url = config.api_base_url + req.originalUrl;
-  console.log('url', url);
+router.all('/*', (req, res) => {
+  if (!req.originalUrl.includes('/oauth/token')) {
+    let url = config.api_v2_base_url + req.originalUrl;
+    console.log('url', url);
+    console.log('Authorization', req.header('Authorization'))
 
-  let r = null;
-  if (req.method === 'POST') {
-    r = request.post({uri: url, json: req.body});
-  } else if (req.method === 'PUT') {
-    r = request.put({uri: url, json: req.body});
+    let r;
+    const options = {headers: {'Authorization': req.header('Authorization')}}
+    console.log('Options ', options);
+
+    if (req.method === 'POST') {
+      r = request.post({uri: url, json: req.body}, options);
+    } else if (req.method === 'PUT') {
+      r = request.put({uri: url, json: req.body}, options);
+    } else {
+      r = request(url, options);
+    }
+
+    console.log('headers', r.headers);
+    req
+      .pipe(r)
+      .pipe(res);
+
   } else {
-    r = request(url);
+    const url = `${config.api_login_base_url}${req.originalUrl}&client_id=${config.client_id}&client_secret=${config.client_secret}`;
+    axios.post(url)
+      .then(resp => {
+        res.send(resp.data);
+      })
   }
-
-  console.log('headers', r.headers);
-
-  req.pipe(r).pipe(res);
-
-  console.log(res.statusCode);
 
 });
 
