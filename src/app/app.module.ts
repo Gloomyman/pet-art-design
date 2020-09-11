@@ -17,13 +17,19 @@ import {CardComponent} from './card/card.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderModule} from './header/header.module';
 import {ProfileModule} from './profile/profile.module';
+import {EditCardPopupComponent} from './edit-card-popup/edit-card-popup.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthCallbackComponent,
-    CardComponent
+    CardComponent,
+    EditCardPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,11 @@ import {ProfileModule} from './profile/profile.module';
     FlexLayoutModule,
     BrowserAnimationsModule,
     HeaderModule,
-    ProfileModule
+    ProfileModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

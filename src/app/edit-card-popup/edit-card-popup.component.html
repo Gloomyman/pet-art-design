@@ -1,0 +1,21 @@
+<mat-card [formGroup]=cardForm
+          class="mat-elevation-z4"
+          fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field>
+    <input formControlName="title" matInput placeholder="Title">
+  </mat-form-field>
+  <mat-form-field>
+    <input formControlName="imageUrl" matInput placeholder="Image"/>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea formControlName="description"
+              matInput
+              matTextareaAutosize
+              placeholder="Description"></textarea>
+  </mat-form-field>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+    <button (click)="onSave()" color="accent" mat-raised-button>SAVE</button>
+    <button (click)="onClose()" color="accent" mat-raised-button>CLOSE</button>
+  </mat-card-actions>
+</mat-card>
+i

@@ -1,13 +1,13 @@
 <app-header></app-header>
 <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
-  <div *ngFor="let num of [1,2,3,4,5,6,7]"
+  <!--  <div *ngFor="let num of [1,2,3,4,5,6,7]"-->
+  <div *ngFor="let card of allCards | async"
        fxFlex="20%"
        fxFlex.lg="25%"
        fxFlex.md="33%"
        fxFlex.sm="50%"
        fxFlex.xs="100%">
     <!--  <div *ngFor="let card of allCards">-->
-    <app-card [imageUrl]="'./../../assets/images/mountains.jpg'"
-              [num]=num></app-card>
+    <app-card [card]=card></app-card>
   </div>
 </div>

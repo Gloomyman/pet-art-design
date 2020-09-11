@@ -15,10 +15,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.allCards = of([new Card(), new Card(), new Card()]);
     this.allCards = this.cardService.getCards();
-    this.allCards.subscribe(all => {
-      console.log(all);
-    });
   }
 }
