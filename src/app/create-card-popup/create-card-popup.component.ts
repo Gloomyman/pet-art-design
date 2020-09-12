@@ -1,21 +1,21 @@
 import {Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Card} from '../core/entity/Card';
 import {CardService} from '../core/service/card/card.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CardMapperService} from '../core/mapper/card-mapper.service';
 
 @Component({
-  selector: 'app-edit-card-popup',
-  templateUrl: './edit-card-popup.component.html',
-  styleUrls: ['./edit-card-popup.component.scss']
+  selector: 'app-create-card-popup',
+  templateUrl: './create-card-popup.component.html',
+  styleUrls: ['./create-card-popup.component.scss']
 })
-export class EditCardPopupComponent implements OnInit {
+export class CreateCardPopupComponent implements OnInit {
 
   cardForm: FormGroup;
   selectedImage: File;
 
-  constructor(private dialogRef: MatDialogRef<EditCardPopupComponent>,
+  constructor(private dialogRef: MatDialogRef<CreateCardPopupComponent>,
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public card: Card,
               private cardService: CardService,
@@ -35,8 +35,8 @@ export class EditCardPopupComponent implements OnInit {
     const value = this.cardForm.value as Card;
     console.log(value);
     if (this.cardForm.valid) {
-      const uploadCardDTO = this.cardMapperService.toUpdateCardDTO(value);
-      this.cardService.updateCard(this.card.id, uploadCardDTO)
+      const createCardDTO = this.cardMapperService.toCreateCardDTO(value, this.selectedImage);
+      this.cardService.createCard(createCardDTO)
         .subscribe(value => {
           console.log('Saved', value);
           this.dialogRef.close();
@@ -67,4 +67,5 @@ export class EditCardPopupComponent implements OnInit {
       this.card.imageUrl = reader.result as string;
     };
   }
+
 }

@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {CreateCardPopupComponent} from './create-card-popup/create-card-popup.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatInputModule} from '@angular/material/input';
     HomeComponent,
     AuthCallbackComponent,
     CardComponent,
-    EditCardPopupComponent
+    EditCardPopupComponent,
+    CreateCardPopupComponent
   ],
   imports: [
     BrowserModule,

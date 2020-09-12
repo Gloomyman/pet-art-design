@@ -1,4 +1,5 @@
 export class CardDTO {
+  id: number;
   description: string;
   html_url: string;
   title: string;

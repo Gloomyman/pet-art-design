@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>{{card.title ? card.title : defaultTitle}}</mat-card-title>
   </mat-card-header>
-  <img [src]="card.imageUrl ? card.imageUrl : defaultImageUrl" alt="mountains" mat-card-image/>
+  <img [src]="card.imageUrl ? card.imageUrl : defaultImageUrl" mat-card-image/>
   <mat-card-content>
     <div [innerHTML]="card.description ? card.description: defaultDescription"></div>
   </mat-card-content>
