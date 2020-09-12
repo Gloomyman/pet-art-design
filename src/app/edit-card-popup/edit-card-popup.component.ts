@@ -17,18 +17,14 @@ export class EditCardPopupComponent implements OnInit {
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public card: Card,
               private cardService: CardService) {
-    this.cardForm = this.formBuilder.group({
-      imageUrl: [card.imageUrl, Validators.required],
-      title: [card.title, Validators.required],
-      description: [card.description, Validators.required]
-    });
   }
 
   ngOnInit(): void {
-    // const card = this.cardForm.value as Card;
-    // this.cardService.updateCard(card)
-    //     this.dialogRef.close();
-    //   });
+    this.cardForm = this.formBuilder.group({
+      imageUrl: [this.card.imageUrl, Validators.required],
+      title: [this.card.title, Validators.required],
+      description: [this.card.description, Validators.required]
+    });
   }
 
   onSave() {

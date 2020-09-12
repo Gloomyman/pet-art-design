@@ -1,16 +1,9 @@
-/**
- * JWT service
- */
+
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const jwtSecret = config.get('jwt.secret');
-const log = require('../../logging.js')('auth-service');
 
-/**
- * Generate the user token
- * @return token The user value.
- */
 function generateLoginTokenFromUserId(user) {
     return jwt.sign(user, jwtSecret, {expiresIn: '1y'});
 }
@@ -37,22 +30,8 @@ function deserializeProfilerData(token) {
     });
 }
 
-function decodedJWTToken(token) {
-    return jwt.decode(token, jwtSecret);
-}
-
-
-// /**
-//  * Generate the token payload
-//  * @return {payload}
-//  */
-// function generateSessionToken(payload) {
-//   return jwt.sign(payload, jwtSecret, { expiresIn: '1y' });
-// }
 
 module.exports = {
-    handleSocialAuthentication,
-    generateLoginTokenFromUserId,
     deserializeProfilerData,
     serializeProfilerData,
 };

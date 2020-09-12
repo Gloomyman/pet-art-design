@@ -1,6 +1,4 @@
-/**
- * Express server configuration
- */
+
 const config = require('config');
 const app = require('./routes/app');
 const log = require('./logging.js')('server');

@@ -1,29 +1,9 @@
-/* eslint-disable no-underscore-dangle */
-// import {map} from 'rxjs/operators';
 
-/**
- * Facebook Auth.
- */
 const {Router} = require('express');
 const config = require('config');
 const request = require('request');
 const axios = require('axios');
 const router = Router();
-
-// router.post('/oauth/token', (req, res, next) => {
-//   let url = `${config.api_login_base_url}${req.originalUrl}?
-//      client_id=${config.client_id}
-//      &client_secret=${config.client_secret}
-//      &code= + ${req.params['code']}`;
-//
-//   const r = request.post({uri: url, json: req.body})
-//   req
-//     .pipe(r)
-//     .pipe(res)
-//     .pipe(response => {
-//       console.log('response', response);
-//     });
-// });
 
 router.all('/*', (req, res) => {
   if (!req.originalUrl.includes('/oauth/token')) {
