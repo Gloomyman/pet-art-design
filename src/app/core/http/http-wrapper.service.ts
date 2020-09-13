@@ -31,7 +31,12 @@ export class HttpWrapperService {
   put<T>(uri: string, body: any): Observable<T> {
     const url = HttpWrapperService.buildUrl(uri);
 
-    return this.httpClient.put<T>(url, body);
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.httpClient.put<T>(url, body, options);
   }
 
   post<T>(uri: string, body: any): Observable<T> {

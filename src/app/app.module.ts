@@ -13,25 +13,25 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {CardComponent} from './card/card.component';
+import {ShotComponent} from './shot/shot.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderModule} from './header/header.module';
 import {ProfileModule} from './profile/profile.module';
-import {EditCardPopupComponent} from './edit-card-popup/edit-card-popup.component';
+import {EditShotPopupComponent} from './shot/edit-shot-popup/edit-shot-popup.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {CreateCardPopupComponent} from './create-card-popup/create-card-popup.component';
+import {CreateShotPopupComponent} from './shot/create-shot-popup/create-shot-popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthCallbackComponent,
-    CardComponent,
-    EditCardPopupComponent,
-    CreateCardPopupComponent
+    ShotComponent,
+    EditShotPopupComponent,
+    CreateShotPopupComponent
   ],
   imports: [
     BrowserModule,

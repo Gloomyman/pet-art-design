@@ -1,13 +1,13 @@
 <app-header></app-header>
 <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
   <!--  <div *ngFor="let num of [1,2,3,4,5,6,7]"-->
-  <div *ngFor="let card of allCards | async"
+  <div *ngFor="let shot of allShots | async"
        fxFlex="20%"
        fxFlex.lg="25%"
        fxFlex.md="33%"
        fxFlex.sm="50%"
        fxFlex.xs="100%">
-    <!--  <div *ngFor="let card of allCards">-->
-    <app-card [card]=card></app-card>
+    <!--  <div *ngFor="let shot of allShots">-->
+    <app-shot [shot]=shot></app-shot>
   </div>
 </div>

@@ -1,10 +1,10 @@
-<mat-card [formGroup]=cardForm
+<mat-card [formGroup]=shotForm
           class="mat-elevation-z4"
           fxLayout="column" fxLayoutAlign="center center">
   <mat-form-field>
     <input [formControlName]="'title'" matInput placeholder="Title">
   </mat-form-field>
-  <img [src]="card.imageUrl" mat-card-image/>
+  <img [src]="shot.imageUrl" mat-card-image/>
   <input #fileUpload
          (change)="onFileSelected($event)"
          [formControlName]="'imageUrl'"

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Card} from '../core/entity/Card';
-import {CardService} from '../core/service/card/card.service';
+import {Shot} from '../core/entity/Shot';
+import {ShotService} from '../core/service/shot/shot.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -9,12 +9,12 @@ import {Observable} from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  allCards: Observable<Card[]>;
+  allShots: Observable<Shot[]>;
 
-  constructor(private cardService: CardService) {
+  constructor(private shotService: ShotService) {
   }
 
   ngOnInit(): void {
-    this.allCards = this.cardService.getCards();
+    this.allShots = this.shotService.getShots();
   }
 }

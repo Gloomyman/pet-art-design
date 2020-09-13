@@ -1,17 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Card} from '../core/entity/Card';
-import {EditCardPopupComponent} from '../edit-card-popup/edit-card-popup.component';
+import {Shot} from '../core/entity/Shot';
+import {EditShotPopupComponent} from './edit-shot-popup/edit-shot-popup.component';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  selector: 'app-shot',
+  templateUrl: './shot.component.html',
+  styleUrls: ['./shot.component.scss']
 })
-export class CardComponent implements OnInit {
+export class ShotComponent implements OnInit {
 
   @Input()
-  card = new Card();
+  shot = new Shot();
 
   readonly defaultTitle = 'Default title';
   readonly defaultImageUrl = './../../assets/images/mountains.jpg';
@@ -24,10 +24,10 @@ export class CardComponent implements OnInit {
 
   }
 
-  openCardDialog() {
-    this.dialog.open(EditCardPopupComponent, {
+  openShotDialog() {
+    this.dialog.open(EditShotPopupComponent, {
       width: '33%',
-      data: this.card
+      data: this.shot
     });
   }
 

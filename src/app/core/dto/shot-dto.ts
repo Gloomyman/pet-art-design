@@ -1,4 +1,4 @@
-export class CardDTO {
+export class ShotDTO {
   id: number;
   description: string;
   html_url: string;

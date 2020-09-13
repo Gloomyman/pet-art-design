@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../core/service/user/user.service';
 import {User} from '../core/entity/User';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -12,18 +12,19 @@ export class ProfileComponent implements OnInit {
   user: User = new User();
   edit: boolean = false;
   userFormGroup: FormGroup;
-  H;
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder) {
-    this.userFormGroup = this.formBuilder.group({});
+    this.userFormGroup = this.formBuilder.group({
+      bio: [null, Validators.required]
+    });
   }
 
   ngOnInit(): void {
     this.userService.getUser()
       .subscribe(user => {
         this.user = user;
-        this.userFormGroup.addControl('bio', new FormControl('', Validators.required));
+        this.userFormGroup.controls.bio.patchValue(user.bio);
       });
   }
 
