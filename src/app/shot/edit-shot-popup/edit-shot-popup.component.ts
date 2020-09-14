@@ -32,8 +32,6 @@ export class EditShotPopupComponent implements OnInit {
 
   onSave() {
     const value = this.shotForm.value as Shot;
-    console.log(value);
-    console.log(this.shotForm.valid);
     if (this.shotForm.valid) {
       const uploadShotDTO = this.shotMapperService.toUpdateShotDTO(value);
       this.shotService.updateShot(this.shot.id, uploadShotDTO)
@@ -50,7 +48,6 @@ export class EditShotPopupComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedImage = event.target.files[0] as File;
-    console.log(this.selectedImage);
 
     this.showSelectedImage(this.selectedImage);
     this.shotForm
