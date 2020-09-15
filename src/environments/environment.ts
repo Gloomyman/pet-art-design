@@ -7,7 +7,7 @@ export const environment = {
   api_login_base_url: 'http://localhost:5000',
   client_id: '201bd47a5f2bc3258fd8594e763016572d10043f42f78f0fe1c654a868db288d',
   client_secret: '2e5e935f4e6899349beca37b788717bbf5a6b6985a2e17c28691bdf206f09ad8',
-  host: 'https://test-integration-7addb.web.app'
+  host: 'http://localhost:4200'
 };
 
 /*д
