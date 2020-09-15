@@ -17,6 +17,6 @@ install:
 
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-  - ng build --prod
+  - npm run build -- --configuration=production
   - npm install -g firebase-tools
   - firebase deploy
