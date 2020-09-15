@@ -11,7 +11,7 @@ import {environment} from '../../../../environments/environment';
 })
 export class AuthService {
 
-  public static readonly LOGIN_URL: string = `https://dribbble.com/oauth/authorize?client_id=201bd47a5f2bc3258fd8594e763016572d10043f42f78f0fe1c654a868db288d&redirect_uri=${environment.host}/auth-callback&state=test&scope=public+upload`;
+  public static readonly LOGIN_URL: string = `https://dribbble.com/oauth/authorize?client_id=${environment.client_id}&redirect_uri=${environment.host}/auth-callback&state=test&scope=public+upload`;
   token: string;
   idTokenName = 'token';
 
